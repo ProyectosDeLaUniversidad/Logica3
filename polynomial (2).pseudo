@@ -1,0 +1,180 @@
+class polif1
+
+    private entero V[]
+    
+    public constructor polif1(entero n) // constructor
+    public function entero expOpos(entero i)
+    public entero function retornaCoeficiente(entero i)
+    public entero function retornaGrado()
+    public void function asignaCoeficiente(entero coeficiente, entero i)
+    public void function asignaGrado(entero i)
+    public void function muestraPolinomio()
+    public void function normaliza()
+    public polif1 function suma(polif1 b)
+    public polif1 function multiplica(polif1 b)
+
+end
+
+public constructor polif1(entero n) // constructor
+    entero i
+    V = new entero[n + 2]
+    V[0] = n
+    for (i = 1; i < n + 2; i++)
+        V[i] = 0
+    endfor
+end polif1
+
+public entero function expOpos(entero i)
+    return V[0] – i + 1 (2-1+1=2)
+end expOpos
+
+public entero function retornaCoeficiente(entero i)
+    return V[i]
+end retornaCoeficiente
+
+public entero function retornaGrado()
+    return V[0]
+end retornaGrado
+
+public void function asignaCoeficiente(entero coeficiente, entero i)
+    V[i] = coeficiente
+end(asignaCoeficiente)
+
+public void function asignaGrado(entero i)
+    V[0] = i
+end(asignaGrado)
+
+public void function muestraPolinomio()
+    entero i
+    for (i = 1; i < V[0] + 2; i++)
+        write(“coeficiente “, V[i], “ exponente “, V[0] – i + 1)
+    end(for)
+end(muestraPolinomio)
+
+// Representacion extensa
+public polif1 function suma(polif1 b)
+    entero m, n, p
+    polif1 c
+    m = retornaGrado() + 1
+    n = b.retornaGrado() + 1
+    p = m – 1
+    if (n – 1 > p)
+        p = n – 1
+    end(if)
+    c = new polif1(p)
+    p = p + 1
+    while (m > 0) and (n > 0) do
+        c.asignaCoeficiente(retornaCoeficiente(m) + b.retornaCoeficiente(n), p)
+        m = m – 1
+        n = n – 1
+        p = p – 1
+    end(while)
+    while (m > 0) do
+        c.asignaCoeficiente(retornaCoeficiente(m), p)
+        m = m – 1
+        p = p – 1
+    end(while)
+    while (n > 0) do
+        c.asignaCoeficiente(b.retornaCoeficiente(n), p)
+        n = n – 1
+        p = p – 1
+    end(while)
+    c.normaliza()
+    return c
+end(suma)
+
+
+void normaliza()
+    entero i, k, n
+    i = 1
+    n = retornaGrado() + 1
+    while (i <= n) and (retornaCoeficiente(i) == 0) do
+        i = i + 1
+    end(while)
+    for (k = i; k <= n; k++) do
+    asignaCoeficiente(retornaCoeficiente(k), k – i + 1)
+    end(for)
+    n = retornaGrado() – i + 1
+    asignaGrado(n)
+end(normaliza)
+
+
+// Representacion simplificada
+public polif1 function suma(polif1 b)
+    entero m, n, p, i, j, k
+    m = retornaGrado() + 1
+    n = b.retornaGrado() + 1
+    p = m – 1
+    if (n – 1 > p) then
+        p = n – 1
+    end(if)
+    polif1 c = new polif1(p)
+    i = 1
+    j = 1
+    k = 0
+    while (i <= m) do
+        ea = expOpos(i)
+        eb = b.expOpos(j)
+        k = k + 1
+        casos de compare(ea, eb)
+        +1: c.asignaCoeficiente(retornaCoeficiente(i), k)
+            i = i + 1
+        –1: c.asignaCoeficiente(b.retornaCoeficiente(j), k)
+            j = j + 1
+        0: s = retornaCoeficiente(i) + b.retornaCoeficiente(j)
+            c.asignaCoeficiente(s, k)
+            i = i + 1
+            j = j + 1
+        end(casos)
+    end(while)
+    c.normaliza
+    return c
+end(suma)
+
+// Representacion Extensa
+public polif1 function multiplica(polif1 b)
+    entero i, j, k, ga, gb, gc, va, vb, vc
+    polif1 c
+    gc = retornaGrado() + b.retornaGrado()
+    c = new polif1(gc)
+    for (i = 1; i <= gc + 1; i++)
+        c.asignaCoeficiente(0, i)
+    end(for)
+    ga = retornaGrado()
+    gb = b.retornaGrado()
+    for i = 1 to ga + 1 do
+         = ga – i + 1
+        for j = 1 to gb + 1 do
+            eb = gb – j + 1
+            ec = ea + eb
+            k = gc – ec + 1
+            va = retornaCoeficiente(i)
+            vb = b.retornaCoeficiente(j)
+            vc = c.retornaCoeficiente(k)
+            c.asignaCoeficiente(vc + va * vb)
+        end(for)
+    end(for)
+    return c
+end(multiplica)
+
+// Representacion Simplificada
+public polif1 function multiplica(polif1 b)
+    entero i, j, k, m, n, s = 0
+    polif1 c
+    i = retornaGrado() + b.retornaGrado()
+    c = new polif1(i)
+    for (j = 1; j <= i + 1; j++)
+        c.asignaCoeficiente(0, j)
+    end(for)
+    m = retornaGrado() + 1
+    n = b.retornaGrado() + 1
+    for (i = 1; i <= m; i++)
+        for (j = 1; j <= n; j++)
+        k = i + j – 1
+        s = c.retornaCoeficiente(k) + retornaCoeficiente(i)
+        *b.retornaCoeficiente(j)
+        c.asignaCoeficiente(s, k)
+        end(for)
+    end(for)
+    return c
+end(multiplica)

@@ -1,0 +1,73 @@
+resta(sucesor(x), sucesor(y)) ::= resta(x,y)
+
+x=10
+y=8
+
+resta(sucesor(10), sucesor(8))
+resta(11,9) ::= 11-9=2
+
+resta(sucesor(10), sucesor(8)) = resta(10,8) = 2
+
+suma(10, sucesor(8)) = 10+9
+sucesor(suma(10,8)) = sucesor(18) = 19
+
+resta(0, 1) 0-1 =-1 NO ES NATURAL
+
+si y no es 0 entonces error
+
+multiplica(2, sucesor(3)) = 2*4 =8
+suma(2, multiplica(2,3)) = suma(2,6)=8
+
+sucesor(divide(suma(sucesor(cero(),3),3),8)) ojo
+
+
+sucesor(y) ::= y+1
+
+sucesor(x) es natural i
+x=i-1
+
+cero()
+sucesor(cero()) = 1
+multiplica(sucesor(cero()),sucesor(cero()))
+
+suma(x, sucesor(y)) ::= sucesor(suma(x,y))
+suma(2,3)
+
+FG 1.suma(sucesor(sucesor(cero())),sucesor(sucesor(sucesor(cero()))
+1.A
+x=(sucesor(sucesor(cero()))=2
+y=(sucesor(sucesor(cero()))=2
+sucesor(y) = sucesor(2) =3
+
+FG 2.sucesor(suma(sucesor(sucesor(cero())),sucesor(sucesor(cero()))))
+2.A
+suma(x,sucesor(y))::= sucesor(suma(x,y))
+suma(sucesor(sucesor(cero())),sucesor(sucesor(cero())))
+x=sucesor(sucesor(cero()))
+y=sucesor(cero())
+
+FG 3.sucesor(suma(sucesor(sucesor(cero())),sucesor(cero())))
+3.A
+suma(x,sucesor(y))::=sucesor(suma(x,y))
+x=sucesor(sucesor(cero()))
+y=cero()
+
+FG 4. sucesor(suma(sucesor(sucesor(cero())),cero()))
+
+suma(x,cero()) ::= x = sucesor(sucesor(cero()))
+
+FG 4.1 sucesor(sucesor(sucesor(cero())))
+
+FG 3.1 sucesor(sucesor(sucesor(sucesor(cero()))))
+
+FG 2.1	sucesor(sucesor(sucesor(sucesor(sucesor(cero())))))
+
+FG 1.1	sucesor(sucesor(sucesor(sucesor(sucesor(sucesor(cero()))))))
+
+sucesor(sucesor(sucesor(sucesor(1))))
+sucesor(sucesor(sucesor(2)))
+sucesor(sucesor(3))
+sucesor(4)
+5
+
+OJO HAY UN ERROR

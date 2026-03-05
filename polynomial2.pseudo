@@ -1,0 +1,95 @@
+
+class termino
+    
+    private entero coeficiente, exponente
+    
+    public constructor termino(entero c, entero e)
+    public void asignaCoeficiente(entero c)
+    public void asignaExponente(entero e)
+    public entero function retornaCoeficiente()
+    pubic entero function retornaExponente()
+
+end(clase termino)
+
+
+class polif2
+    
+    private objeto V[]
+    
+    public polif2 function (entero n) // constructor
+    public entero function numeroDeTerminos()
+    public termino function terminoEnPosicion(entero i)
+    public void function asignaTermino(termino t, entero i)
+    public void function asignaNumeroTerminos(entero i)
+    public void function insertaTermino(termino t)
+    public entero function grado()
+    public polif2 function suma(polif2 b)
+    public polif2 function smult(termino t)
+    public polif2 function multiplica(polif2 b)
+
+end(polif2)
+
+
+public constructor polif2(entero n) // constructor
+    V = new objeto[n + 2]
+    V[0] = 0
+    for (int i = 1; i <= n + 1; i++)
+    V[i] = null
+    end(for)
+end(polif2)
+
+public termino function terminoEnPosicion(entero i)
+    return (termino)V[i]
+end(terminoEnPosicion)
+
+public polif2 function suma(polif2 b)
+    entero m, n, o, i, j, k, ci, ei, cj, ej, ck
+    termino ti, tj, tk
+    polif2 c
+    m = numeroDeTerminos()
+    n = b.numeroDeTerminos()
+    c = new polif2(m + n)
+    i = 1
+    j = 1
+    k = 0
+    while (i <= m and j <= n) do
+        ti = terminoEnPosicion(i)
+        tj = b.terminoEnPosicion(j)
+        ei = ti.retornaExponente()
+        ej = tj.retornaExponente()
+        k = k + 1
+        casos de (compare(ei, ej))
+            +1: c.asignaTermino(ti, k)
+            i = i + 1
+            break
+            –1: c.asignaTermino(tj, k)
+            j = j + 1
+            break
+            0: ci = ti.retornaCoeficiente()
+            cj = tj.retornaCoeficiente()
+            ck = ci + cj
+            if (ck != 0) then
+                tk = new termino(ck, ei)
+                c.asignaTermino(tk, k)
+            else
+                k = k – 1
+            end(if)
+            i = i + 1
+            j = j + 1
+        end(casos)
+    end(while)
+    while (i <= m) do
+        ti = terminoEnPosicion(i)
+        k = k + 1
+        c.asignaTermino(ti, k)
+        i = i + 1
+    end(while)
+    while (j <= n) do
+        tj = b.terminoEnPosicion(j)
+        k = k + 1
+        c.asignaTermino(tj, k)
+        j = j + 1
+    end(while)
+    c.asignaNumeroTerminos(k)
+    return c
+end(suma)

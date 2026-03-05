@@ -1,0 +1,42 @@
+multiplica(x, sucesor(y)) ::= suma(x,multiplica(x,y))
+
+x,y
+
+suma(x, suma(x, multiplica(x,y-1))
+suma(x, suma(x, suma(x, multiplica(x,y-2).....
+
+y-n = 1
+multiplica(x, y-n) = x
+
+4*5 = 4+4+4+4+4
+4*5 = 4+(4+4+4+4) =4+(4*4) =4+4+(4*3) =4+4+4(4*2) =4+4+4+4+(4*1) = 4+4+4+4+4
+4+4+4+4+4+(4*0)
+
+x*sucesor(y) = x+x*y
+
+x=4
+sucesor(y)=5
+y=4
+
+4+4*4
+
+multiplica(x,sucesor(cero()) ::=x
+multiplica(4,1) =4 
+
+Axioma: divide(x,y) ::= if menor(x,y) then cero() else sucesor(divide(resta(x,y),y))
+
+12/4=1+(12-4)/4 =4/4+(12-4)/4 =4/4+4/4+(8-4)/4 =4/4+4/4+4/4+(4-4)/4 =4/4+4/4+4/4+cero()
+
+Es decir, 12 dividido 4 es 1 mas 8 dividido 4, siendo 8 el dividendo menos el divisor
+
+sucesor(divide(resta(4,2),2))
+
+resta(4,2)=2
+
+sucesor(divide(2,2))
+
+sucesor(divide(2,2))
+
+divide(2,2) = sucesor(divide(resta(2,2),2)) = sucesor(divide(0,2)) = sucesor(cero())
+
+sucesor(sucesor(cero())) =2

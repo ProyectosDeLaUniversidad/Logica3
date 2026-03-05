@@ -1,0 +1,140 @@
+class matrizForma2
+
+    private nodoDoble mat
+
+    public function matrizForma2(entero m, entero n) // constructor
+    public function nodoDoble nodoCabeza()
+    public function nodoDoble primerNodo()
+    public function boolean esVacia()
+    public function boolean finDeRecorrido(nodoDoble p)
+    public function void conectaPorFilasForma2(nodoDoble x)
+    public function void conectaPorColumnasForma2(nodoDoble x)
+    public function void muestraMatriz()
+    public function matrizForma2 suma(matrizForma2 b)
+    public function matrizForma2 multiplica(matrizForma2 b)
+    public function matrizForma2 traspuesta()
+
+end(clase matrizForma2)
+
+
+public function matrizForma2(entero m, entero n) // constructor
+    tripleta t = new tripleta(m, n, null)
+    mat = new nodoDoble(t)
+    tx = new tripleta(null, null, null)
+    x = new nodoDoble(tx)
+    x.asignaLi(x)
+    x.asignaLd(x)
+    mat.asignaLd(x)
+end(matrizForma2)
+
+
+public function nodoDoble primerNodo()
+    return mat
+end(primerNodo)
+
+
+public function nodoDoble nodoCabeza()
+    return mat.retornaLd()
+end(nodoCabeza)
+
+
+public function boolean esVacia()
+    nodoDoble p = mat.retornaLd()
+    return (p.retornaLi() == p and p.retornaLd() == p)
+end(esVacia)
+
+
+public function boolean finDeRecorrido(nodoDoble p)
+    return p == nodoCabeza()
+end(finDeRecorrido)
+
+void muestraMatriz()
+    entero qf, qc, qv
+    nodoDoble q
+    tripleta tq
+    q = nodoCabeza().retornaLd()
+    while (no finDeRecorrido(q)) do
+        tq = (tripleta)q.retornaDato()
+        qf = tq.retornaFila()
+        qc = tq.retornaColumna()
+        qv = tq.retornaValor()
+        write(qf, qc, qv)
+        q = q.retornaLd()
+    end(while)
+end(muestraMatriz)
+
+
+
+/* Con este algoritmo se conecta por filas un nodo que represente un dato de la fila i columna j. El
+proceso es simple: se recorre la lista a partir del nodo auxiliar que funciona como nodo cabeza
+avanzando con el campo de liga derecha y comparando la fila del nodo a insertar con la fila
+del nodo que se está recorriendo. Este proceso se efectúa con el ciclo de las instrucciones
+10 a 14. Mientras la fila de la tripleta tx sea mayor que la fila de la tripleta del nodo q se
+avanza sobre la lista hasta que se termine de recorrer la lista o hasta que la fila de la tripleta
+tx sea menor que la fila de la tripleta almacenada en el nodo q. Cuando esto suceda se
+sigue avanzando sobre la lista de la matriz mientras la fila de la tripleta tx sea igual a la fila
+de la tripleta del nodo q y la columna de la tripleta tx sea mayor que la columna de la tripleta
+del nodo q. Cuando se salga de este ciclo se habrá encontrado el sitio en el cual hay
+que conectar el nodo que tiene la tripleta tx, es decir, el nodo x pasado como parámetro.
+La conexión del nodo x se efectúa con las instrucciones 20 y 21.*/
+
+public function void conectaPorFilasForma2(nodoDoble x)
+    nodoDoble p, q, anterior
+    tripleta tq, tx
+    entero i
+    tx = (tripleta)x.retornaDato()
+    p = nodoCabeza()
+    anterior = p
+    q = p.retornaLd()
+    tq = (tripleta)q.retornaDato()
+    while (q != p and tq.retornaFila() < tx.retornaFila()) do
+        anterior = q
+        q = q.retornaLd()
+        tq = (tripleta)q.retornaDato()
+    end(while)
+    while (q != p and tq.retornaFila() == tx.retornaFila() and
+        tq.retornaColumna() < tx.retornaColumna() do
+        anterior = q
+        q = q.retornaLd()
+        tq = (tripleta)q.retornaDato()
+    end(while)
+    anterior.asignaLd(x)
+    x.asignaLd(q)
+end(conectaPorFilasForma2)
+
+/* La conexión por columnas es similar a la conexión por filas. La diferencia está en que el
+recorrido se hace usando el campo de liga izquierda que es el que conecta los nodos por
+columnas. */
+void conectaPorColumnasForma2(nodoDoble x)
+    nodoDoble p, q, anterior
+    tripleta tq, tx
+    entero i
+    tx = (tripleta)x.retornaDato()
+    p = nodoCabeza()
+    anterior = p
+    q = p.retornaLi()
+    tq = (tripleta)q.retornaDato()
+    while (q ¡= p and tq.retornaColumna() < tx.retornaColumna()) do
+        anterior = q
+        q = q.retornaLi()
+        tq = (tripleta)q.retornaDato()
+    end(while)
+    while (q ¡= p and tq.retornaColumna() == tx.retornaColumna() and
+        tq.retornaFila() < tx.retornaFila() do
+        anterior = q
+        q = q.retornaLi()
+        tq = (tripleta)q.retornaDato()
+    end(while)
+    anterior.asignaLi(x)
+    x.asignaLi(q)
+end(conectaPorColumnasForma2)
+
+public function read(m, n)
+    matrizForma2 a = new matrizForma2(m, n)
+    mientras haya datos por leer haga
+    read(f, c, v)
+    t = new tripleta(f, c, v)
+    x = new nodoDoble(t)
+    a.conectaPorFilasForma2(x)
+    a.conectaPorColumnasForma2(x)
+end(mientras)

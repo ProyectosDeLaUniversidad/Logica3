@@ -1,0 +1,14 @@
+int buscaDatoConCondicion(int inicio, int fin)
+	if (inicio <= fin) then
+		mitad = (inicio + fin)/2
+		casos de (mitad – V[mitad]
+			< 0: return buscaDatoConCondicion(inicio, mitad – 1)
+				break
+			= 0: return mitad
+				break
+			> 0: 
+				return buscaDatoConCondicion(mitad + 1, fin)
+		fin(casos)
+	end(if)
+	return 0
+fin(buscaDatoConCondicion)

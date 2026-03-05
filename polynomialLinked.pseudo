@@ -1,0 +1,84 @@
+// Usando listas enlazadas
+public polinomio function  suma(polinomio b)
+    entero m, n, o, i, j, k, ci, ei, cj, ej, ck
+    termino ti, tj, tk
+    polinomio c
+    nodoSimple p, q
+    c = new polinomio()
+    p = primerNodo()
+    q = b.primerNodo()
+    while (no finDeRecorrido(p) and no b.finDeRecorrido(q)) do
+        ti = (termino)p.retornaDato()
+        tj = (termino)q.retornaDato()
+        ei = ti.retornaExponente()
+        ej = tj.retornaExponente()
+        casos de (compare(ei, ej))
+            +1: c.insertar(ti, c.ultimoNodo())
+                p = p.retornaLiga()
+                break
+            –1: c.insertar(tj, c.ultimoNodo())
+                q = q.retornaLiga()
+                break
+            0: ci = ti.retornaCoeficiente()
+                cj = tj.retornaCoeficiente()
+                ck = ci + cj
+                if (ck != 0) then
+                    tk = new termino(ck, ei)
+                    c.insertar(tk, c.ultimoNodo())
+                end(if)
+                p = p.retornaLiga()
+                q = q.retornaLiga()
+        end(casos)
+    end(while)
+    while (no finDeRecorrido(p)) do
+        ti = (termino)p.retornaDato()
+        c.insertar(ti, c.ultimoNodo())
+        p = p.retornaLiga()
+    end(while)
+    while (no b.finDeRecorrido(q)) do
+        tj = (termino)q.retornaDato()
+        c.insertar(tj, c.ultimoNodo())
+        q = q.retornaLiga()
+    end(while)
+    return c
+end(suma)
+
+/* 
+* Usando listas simplemente ligadas circulares con registro cabeza.
+* Para polinomios cuyo exponente sea mayor o igual que cero.
+*/
+public polinomio function suma(polinomio b)
+entero m, n, o, i, j, k, ci, ei, cj, ej, ck
+termino ti, tj, tk
+polinomio c
+nodoSimple p, q
+c = new polinomio()
+p = primerNodo()
+q = b.primerNodo()
+while (no finDeRecorrido(p) or no b.finDeRecorrido(q)) do
+ti = (termino)p.retornaDato()
+tj = (termino)q.retornaDato()
+ei = ti.retornaExponente()
+ej = tj.retornaExponente()
+casos de (compare(ei, ej))
++1: c.insertar(ti, c.ultimoNodo())
+p = p.retornaLiga()
+break
+–1: c.insertar(tj, c.ultimoNodo())
+q = q.retornaLiga()
+break
+0: ci = ti.retornaCoeficiente()
+cj = tj.retornaCoeficiente()
+ck = ci + cj
+if (ck != 0) then
+tk = new termino(ck, ei)
+c.insertar(tk, c.ultimoNodo())
+end(if)
+p = p.retornaLiga()
+q = q.retornaLiga()
+fin(casos)
+end(while)
+tk = new termino(0, –1)
+c.cabeza().asignaDato(tk)
+return c
+fin(suma)

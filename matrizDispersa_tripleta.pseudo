@@ -1,0 +1,42 @@
+class tripleta
+  private entero fila, columna
+  private Object valor
+
+  public constructor tripleta(entero f, entero c, objeto v) // constructor
+  public function void asignaFila(entero f)
+  public function void asignaColumna(entero c)
+  public function void asignaValor(objeto v)
+  public function entero retornaFila()
+  public function entero retornaColumna()
+  public function Objeto retornaValor()
+end(tripleta)
+
+public function constructor tripleta(entero f, entero c, objeto v) // constructor
+  fila = f
+  columna = c
+  valor = v
+end(tripleta)
+
+public function void asignaFila(entero f)
+  fila = f
+end(asignaFila)
+
+public function void asignaColumna(entero c)
+  columna = c
+end(asignaColumna)}
+
+public function void asignaValor(objeto v)
+  valor = v
+end(asignaValor)
+
+public function entero retornaFila()
+  return fila
+end(retornaFila)
+
+public function entero retornaColumna()
+  return columna
+end(retornaColumna)
+
+public objeto retornaValor()
+  return valor
+end(retornaValor)

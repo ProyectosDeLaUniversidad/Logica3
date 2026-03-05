@@ -1,0 +1,45 @@
+L = [a,h]
+almacenar(almacenar(crear(),1,a),2,h)
+ 
+borrar(L,1)
+borrar(almacenar(almacenar(crear(),1,a),2,h),1)
+
+i=2 j=1
+almacenar(borrar(L,j),i-1,a)
+almacenar(borrar(almacenar(crear(),1,a),1,h))
+
+i=1 j=1
+almacenar(borrar(crear(),1),1,h)
+almacenar(crear(),1,h) -> L =[h] 
+
+Lista Ordenada L = (a,b,e,h)
+
+almacenar(almacenar(almacenar(almacenar(crear(),1,a),2,b),3,e),4,h) L = (a,b,e,h)
+
+almacenar(crear(),1,a) -> L = (a)
+
+almacenar(almacenar(crear(),1,a),2,b) -> L = (a,b)
+
+almacenar(almacenar(almacenar(crear(),1,a),2,b),3,e) -> L = (a,b,e)
+
+longitud(L)
+longitud(almacenar(almacenar(almacenar(almacenar(crear(),1,a)),2,b),3,e),4,h))
+1+longitud(almacenar(almacenar(almacenar(crear(),1,a),2,b),3,e))
+1+1+longitud(almacenar(almacenar(crear(),1,a),2,b))
+1+1+1+longitud(almacenar(crear(),1,a))
+1+1+1+1+longitud(crear())
+1+1+1+1+0
+
+recuperar(almacenar(almacenar(almacenar(almacenar(crear(),1,a),4,h),3,e)2,b),2)
+recuperar(almacenar(L,2,b)= b
+
+recuperar(almacenar(almacenar(almacenar(almacenar(crear(),1,a),4,h),3,e)2,b),1)
+recuperar(almacenar(almacenar(almacenar(crear(),1,a),4,h),3,e),1)
+recuperar(almacenar(almacenar(crear(),1,a),4,h),1)
+recuperar(almacenar(crear(),1,a).1) = a 
+
+recuperar(almacenar(almacenar(almacenar(almacenar(crear(),1,a),4,h),3,e)2,b),5)
+**
+***
+****
+recuperar(crear(),5) error

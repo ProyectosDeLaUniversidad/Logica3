@@ -1,0 +1,32 @@
+void dijkstraModificado(costos[][], n, v, costoMinimo[])
+	for (i = 1; i <= n; i++) do
+		costoMinimo[i] = costos[v][i]
+		s[i]=0
+		ruta[i] = i
+	end(for)
+	s[v] = 1
+	i = 1
+	while (i < n – 1) do
+		j = 1
+		while (s[j] == 1) do
+			j = j + 1
+		end(while)
+		w = j
+		for (j = w + 1; j <= n; j++) do
+			if (s[j] == 0 and costoMinimo[j] < costoMinimo[w]) then
+				w = j
+			end(if)
+		end(for)
+		s[w] = 1
+		i = i + 1
+		for (j = 1; j < = n; j++) do
+			if (s[j] == 0) then
+				paso = costoMinimo[w] + costos[w][j]
+				if (paso < costoMinimo[j]) then
+					costoMinimo[j] = paso
+					ruta[j] = w
+				end(if)
+			end(if)
+		end(for)
+	end(while)
+fin(dijkstraModificado)

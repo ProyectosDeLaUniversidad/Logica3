@@ -1,0 +1,151 @@
+class matrizForma1
+
+    private nodoDoble mat
+
+    public constructor matrizForma1(entero m, entero n) // constructor
+    public function nodoDoble nodoCabeza()
+    public function nodoDoble primerNodo()
+    public function boolean esVacia()
+    public function boolean finDeRecorrido(nodoDoble p)
+    public function void construyeNodosCabeza()
+    public function void conectaPorFilas(nodoDoble x)
+    public function void conectaPorColumnas(nodoDoble x)
+    public function void muestraMatriz()
+    public function matrizForma1 suma(matrizForma1 b)
+    public function matrizForma1 multiplica(matrizForma1 b)
+    public function matrizForma1 transpuesta()
+
+end(class matrizForma1)
+
+
+public constuctor matrizForma1(entero m, entero n) // constructor
+    tripleta t = new tripleta(m, n, null)
+    mat = new nodoDoble(t)
+    t.asignaValor(mat)
+    mat.asignaDato(t)
+end(matrizForma1)
+
+
+public function nodoDoble nodoCabeza()
+    return mat
+end(nodoCabeza)
+
+public function nodoDoble primerNodo()
+    tripleta tp = (tripleta)mat.retornaDato()
+    nodoDoble p = (nodoDoble)tp.retornaValor()
+    return p
+end(primerNodo)
+
+public function boolean esVacia()
+    nodoDoble p = primerNodo()
+    return p == mat
+end(esVacia)
+
+public function boolean finDeRecorrido(nodoDoble p)
+    return p == mat
+end(finDeRecorrido)
+
+public function void muestraMatriz()
+    entero qf, qc, qv
+    nodoDoble p, q
+    tripleta tq, tp
+    p = primerNodo()
+    while (no finDeRecorrido(p)) do
+        q = p.retornaLd()
+        while (q != p) do
+            tq = (tripleta)q.retornaDato()
+            qf = tq.retornaFila()
+            qc = tq.retornaColumna()
+            qv = tq.retornaValor()
+            write(qf, qc, qv)
+            q = q.retornaLd()
+        end(while)
+        tp = (tripleta)p.retornaDato()
+        p = (nodoDoble)tp.retornaValor()
+    end(while)
+end(muestraMatriz)
+
+
+public function void construyeNodosCabeza()
+    entero mayor, i
+    nodoDoble x, ultimo
+    tripleta t
+    ultimo = nodoCabeza()
+    t = (tripleta)ultimo.retornaDato()
+    m = t.retornaFila()
+    n = t.retornaColumna()
+    mayor = m
+    if (n > m)
+    mayor = n
+    end(if)
+    for (i = 1; i <= mayor; i++) do
+        t = new tripleta(i, i, nodoCabeza())
+        x = new nodoDoble(t)
+        x.asignaLd(x)
+        x.asignaLi(x)
+        t = (tripleta)ultimo.retornaDato()
+        t.asignaValor(x)
+        ultimo.asignaDato(t)
+        ultimo = x
+    end(for)
+end(construyeNodosCabeza)
+
+
+void conectaPorFilas(nodoDoble x)
+    nodoDoble p, q, anterior
+    tripleta tp, tq, tx
+    entero i
+    tx = (tripleta)x.retornaDato()
+    p = primerNodo()
+    for (i = 1; i < tx.retornaFila(); i++) do
+        tp = (tripleta)p.retornaDato()
+        p = (nodoDoble)tp.retornaValor()
+    end(for)
+    anterior = p
+    q = p.retornaLd()
+    tq = (tripleta)q.retornaDato()
+    while ((q != p) and (tq.retornaColumna() < tx.retornaColumna())) do
+        anterior = q
+        q = q.retornaLd()
+        tq = (tripleta)q.retornaDato()
+    end(while)
+    anterior.asignaLd(x)
+    x.asignaLd(q)
+end(conectaPorFilas)
+
+
+void conectaPorColumnas(nodoDoble x)
+    nodoDoble p, q, anterior
+    tripleta tp, tq, tx
+    entero i
+    tx = (tripleta)x.retornaDato()
+    p = primerNodo()
+    for (i = 1; i < tx.retornaColumna(); i++) do
+        tp = (tripleta)p.retornaDato()
+        p = (nodoDoble)tp.retornaValor()
+    end(for)
+    anterior = p
+    q = p.retornaLi()
+    tq = (tripleta)q.retornaDato()
+    while ((q != p) and (tq.retornaFila() < tx.retornaFila())) do
+        anterior = q
+        q = q.retornaLi()
+        tq = (tripleta)q.retornaDato()
+    end(while)
+    anterior.asignaLi(x)
+    x.asignaLi(q)
+end(conectaPorColumnas)
+
+
+public function read(m, n)
+    matrizForma1 a = new matrizForma1(m, n)
+    a.construyeNodosCabeza()
+    mientras haya datos por leer haga
+    read(f, c, v)
+    t = new tripleta(f, c, v)
+    x = new nodoDoble(t)
+    a.conectaPorFilas(x)
+    a.conectaPorColumnas(x)
+end(mientras)
+
+

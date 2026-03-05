@@ -1,0 +1,24 @@
+
+4x^3+5x^6-4x^3+2x
+
+cero() = 0 = P0
+agregar(P0,4,3)
+agregar(cero(),4,3)= 4x^3+0= P1
+
+agregar(P1,5,6)
+agregar(agregar(cero(),4,3),5,6)= 4x^3+5x^6+0= P2
+
+agregar(P2,-4,3)
+agregar(agregar(agregar(cero(),4,3),5,6),-4,3)= 4x^3+5x^6-4x^3+0= P3
+
+agregar(P3,2,1)
+agregar(agregar(agregar(agregar(cero(),4,3),5,6),-4,3),2,1) = 4x^3+5x^6-4x^3+2x+0= P4
+
+2x^2+3x^1-3
+v=[2,2,3,-3]
+
+x^4+0x^3-8x^2+0x^1+9x^0
+v=[4,1,0,-8,0,9]
+
+x^100+1
+v=[100,1,0,0,0,0 .... .... .... 0, 1] =n+2
